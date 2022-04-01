@@ -1,0 +1,354 @@
+20 vulnerabilities (15 moderate, 5 high)
+
+To address all issues, run:
+  npm audit fix
+PS C:\Users\Owner\Documents\careerfoundry\myFlix-client> npm audit fix 
+
+up to date, audited 936 packages in 5s
+
+73 packages are looking for funding
+  run `npm fund` for details
+
+# npm audit report
+
+glob-parent  <5.1.2
+Severity: high
+Regular expression denial of service in glob-parent - https://github.com/advisories/GHSA-ww39-953v-wcq6
+fix available via `npm audit fix`
+node_modules/fast-glob/node_modules/glob-parent
+node_modules/parcel-bundler/node_modules/glob-parent
+  chokidar  1.0.0-rc1 - 2.1.8
+  Depends on vulnerable versions of glob-parent
+  node_modules/parcel-bundler/node_modules/chokidar
+    @parcel/watcher  <=1.12.1
+    Depends on vulnerable versions of chokidar
+    node_modules/parcel-bundler/node_modules/@parcel/watcher
+      parcel-bundler  >=1.4.0
+      Depends on vulnerable versions of @parcel/watcher
+      Depends on vulnerable versions of css-modules-loader-core
+      Depends on vulnerable versions of fast-glob
+      Depends on vulnerable versions of node-forge
+      node_modules/parcel-bundler
+  fast-glob  <=2.2.7
+  Depends on vulnerable versions of glob-parent
+  node_modules/fast-glob
+
+node-forge  <=1.2.1
+Severity: moderate
+Open Redirect in node-forge - https://github.com/advisories/GHSA-8fr3-hfg3-gpgp
+Improper Verification of Cryptographic Signature in `node-forge` - https://github.com/advisories/GHSA-2r2c-g63r-vccr
+fix available via `npm audit fix`
+node_modules/node-forge
+  parcel-bundler  >=1.4.0
+  Depends on vulnerable versions of @parcel/watcher
+  Depends on vulnerable versions of css-modules-loader-core
+  Depends on vulnerable versions of fast-glob
+  Depends on vulnerable versions of node-forge
+  node_modules/parcel-bundler
+
+nth-check  <2.0.1
+Severity: moderate
+Inefficient Regular Expression Complexity in nth-check - https://github.com/advisories/GHSA-rp65-9cf3-cjxr
+fix available via `npm audit fix`
+node_modules/nth-check
+  css-select  <=3.1.0
+  Depends on vulnerable versions of nth-check
+  node_modules/css-select
+    svgo  1.0.0 - 1.3.2
+    Depends on vulnerable versions of css-select
+    node_modules/svgo
+      htmlnano  0.1.7 - 0.2.9
+      Depends on vulnerable versions of cssnano
+      Depends on vulnerable versions of purgecss
+      Depends on vulnerable versions of svgo
+      node_modules/htmlnano
+      postcss-svgo  4.0.0-nightly.2020.1.9 - 5.0.0-rc.2
+      Depends on vulnerable versions of svgo
+      node_modules/postcss-svgo
+        cssnano-preset-default  <=4.0.8
+        Depends on vulnerable versions of postcss-svgo
+        node_modules/cssnano-preset-default
+          cssnano  4.0.0-nightly.2020.1.9 - 4.1.11
+          Depends on vulnerable versions of cssnano-preset-default
+          node_modules/cssnano
+
+postcss  <=7.0.35
+Severity: moderate
+Regular Expression Denial of Service in postcss - https://github.com/advisories/GHSA-566m-qj78-rww5
+Regular Expression Denial of Service in postcss - https://github.com/advisories/GHSA-hwj9-h5mp-3pm3
+fix available via `npm audit fix`
+node_modules/css-modules-loader-core/node_modules/postcss
+node_modules/postcss-modules-extract-imports/node_modules/postcss
+node_modules/postcss-modules-local-by-default/node_modules/postcss
+node_modules/postcss-modules-scope/node_modules/postcss
+node_modules/postcss-modules-values/node_modules/postcss
+node_modules/purgecss/node_modules/postcss
+  css-modules-loader-core  *
+  Depends on vulnerable versions of postcss
+  Depends on vulnerable versions of postcss-modules-values
+  node_modules/css-modules-loader-core
+    parcel-bundler  >=1.4.0
+    Depends on vulnerable versions of @parcel/watcher
+    Depends on vulnerable versions of css-modules-loader-core
+    Depends on vulnerable versions of fast-glob
+    Depends on vulnerable versions of node-forge
+    node_modules/parcel-bundler
+  postcss-modules-extract-imports  <=1.2.1
+  Depends on vulnerable versions of postcss
+  node_modules/postcss-modules-extract-imports
+  postcss-modules-local-by-default  <=1.2.0
+  Depends on vulnerable versions of postcss
+  node_modules/postcss-modules-local-by-default
+  Depends on vulnerable versions of postcss
+  node_modules/postcss-modules-scope
+  postcss-modules-values  <=1.3.0
+  Depends on vulnerable versions of postcss
+  node_modules/postcss-modules-values
+  purgecss  <=1.0.1 || 2.0.1-beta.0 - 3.0.0
+  Depends on vulnerable versions of postcss
+  node_modules/purgecss
+    htmlnano  0.1.7 - 0.2.9
+    Depends on vulnerable versions of cssnano
+    Depends on vulnerable versions of purgecss
+    Depends on vulnerable versions of svgo
+    node_modules/htmlnano
+
+20 vulnerabilities (15 moderate, 5 high)
+
+To address all issues, run:
+  npm audit fix
+PS C:\Users\Owner\Documents\careerfoundry\myFlix-client> npm audit fix --force
+npm WARN using --force Recommended protections disabled.
+
+up to date, audited 936 packages in 5s
+
+73 packages are looking for funding
+  run `npm fund` for details
+
+# npm audit report
+
+glob-parent  <5.1.2
+Severity: high
+Regular expression denial of service in glob-parent - https://github.com/advisories/GHSA-ww39-953v-wcq6
+fix available via `npm audit fix`
+node_modules/fast-glob/node_modules/glob-parent
+node_modules/parcel-bundler/node_modules/glob-parent
+  chokidar  1.0.0-rc1 - 2.1.8
+  Depends on vulnerable versions of glob-parent
+  node_modules/parcel-bundler/node_modules/chokidar
+    @parcel/watcher  <=1.12.1
+    Depends on vulnerable versions of chokidar
+    node_modules/parcel-bundler/node_modules/@parcel/watcher
+      parcel-bundler  >=1.4.0
+      Depends on vulnerable versions of @parcel/watcher
+      Depends on vulnerable versions of css-modules-loader-core
+      Depends on vulnerable versions of fast-glob
+      Depends on vulnerable versions of node-forge
+      node_modules/parcel-bundler
+  fast-glob  <=2.2.7
+  Depends on vulnerable versions of glob-parent
+  node_modules/fast-glob
+
+node-forge  <=1.2.1
+Severity: moderate
+Open Redirect in node-forge - https://github.com/advisories/GHSA-8fr3-hfg3-gpgp
+Improper Verification of Cryptographic Signature in `node-forge` - https://github.com/advisories/GHSA-2r2c-g63r-vccr
+fix available via `npm audit fix`
+node_modules/node-forge
+  parcel-bundler  >=1.4.0
+  Depends on vulnerable versions of @parcel/watcher
+  Depends on vulnerable versions of css-modules-loader-core
+  Depends on vulnerable versions of fast-glob
+  Depends on vulnerable versions of node-forge
+  node_modules/parcel-bundler
+
+nth-check  <2.0.1
+Severity: moderate
+Inefficient Regular Expression Complexity in nth-check - https://github.com/advisories/GHSA-rp65-9cf3-cjxr
+fix available via `npm audit fix`
+node_modules/nth-check
+  css-select  <=3.1.0
+  Depends on vulnerable versions of nth-check
+  node_modules/css-select
+    svgo  1.0.0 - 1.3.2
+    Depends on vulnerable versions of css-select
+    node_modules/svgo
+      htmlnano  0.1.7 - 0.2.9
+      Depends on vulnerable versions of cssnano
+      Depends on vulnerable versions of purgecss
+      Depends on vulnerable versions of svgo
+      node_modules/htmlnano
+      postcss-svgo  4.0.0-nightly.2020.1.9 - 5.0.0-rc.2
+      Depends on vulnerable versions of svgo
+      node_modules/postcss-svgo
+        cssnano-preset-default  <=4.0.8
+        Depends on vulnerable versions of postcss-svgo
+        node_modules/cssnano-preset-default
+          cssnano  4.0.0-nightly.2020.1.9 - 4.1.11
+          Depends on vulnerable versions of cssnano-preset-default
+          node_modules/cssnano
+
+postcss  <=7.0.35
+Severity: moderate
+Regular Expression Denial of Service in postcss - https://github.com/advisories/GHSA-566m-qj78-rww5
+Regular Expression Denial of Service in postcss - https://github.com/advisories/GHSA-hwj9-h5mp-3pm3
+fix available via `npm audit fix`
+node_modules/css-modules-loader-core/node_modules/postcss
+node_modules/postcss-modules-extract-imports/node_modules/postcss
+node_modules/postcss-modules-local-by-default/node_modules/postcss
+node_modules/postcss-modules-scope/node_modules/postcss
+node_modules/postcss-modules-values/node_modules/postcss
+node_modules/purgecss/node_modules/postcss
+  css-modules-loader-core  *
+  Depends on vulnerable versions of postcss
+  Depends on vulnerable versions of postcss-modules-values
+  node_modules/css-modules-loader-core
+    parcel-bundler  >=1.4.0
+    Depends on vulnerable versions of @parcel/watcher
+    Depends on vulnerable versions of css-modules-loader-core
+    Depends on vulnerable versions of fast-glob
+    Depends on vulnerable versions of node-forge
+    node_modules/parcel-bundler
+  postcss-modules-extract-imports  <=1.2.1
+  Depends on vulnerable versions of postcss
+  node_modules/postcss-modules-extract-imports
+  postcss-modules-local-by-default  <=1.2.0
+  Depends on vulnerable versions of postcss
+  node_modules/postcss-modules-local-by-default
+  postcss-modules-scope  <=1.1.0
+  Depends on vulnerable versions of postcss
+  node_modules/postcss-modules-scope
+  postcss-modules-values  <=1.3.0
+  Depends on vulnerable versions of postcss
+  node_modules/postcss-modules-values
+  purgecss  <=1.0.1 || 2.0.1-beta.0 - 3.0.0
+  Depends on vulnerable versions of postcss
+  node_modules/purgecss
+    htmlnano  0.1.7 - 0.2.9
+    Depends on vulnerable versions of cssnano
+    Depends on vulnerable versions of purgecss
+    Depends on vulnerable versions of svgo
+    node_modules/htmlnano
+
+20 vulnerabilities (15 moderate, 5 high)
+
+To address all issues, run:
+  npm audit fix
+PS C:\Users\Owner\Documents\careerfoundry\myFlix-client> npm audit fix --force
+npm WARN using --force Recommended protections disabled.
+
+up to date, audited 936 packages in 5s
+
+73 packages are looking for funding   
+  run `npm fund` for details
+
+# npm audit report 
+
+glob-parent  <5.1.2
+Severity: high
+Regular expression denial of service in glob-parent - https://github.com/advisories/GHSA-ww39-953v-wcq6
+fix available via `npm audit fix`
+node_modules/fast-glob/node_modules/glob-parent
+node_modules/parcel-bundler/node_modules/glob-parent
+  chokidar  1.0.0-rc1 - 2.1.8
+  Depends on vulnerable versions of glob-parent
+  node_modules/parcel-bundler/node_modules/chokidar
+    @parcel/watcher  <=1.12.1
+    Depends on vulnerable versions of chokidar
+    node_modules/parcel-bundler/node_modules/@parcel/watcher
+      parcel-bundler  >=1.4.0
+      Depends on vulnerable versions of @parcel/watcher
+      Depends on vulnerable versions of css-modules-loader-core
+      Depends on vulnerable versions of fast-glob
+      Depends on vulnerable versions of node-forge
+      node_modules/parcel-bundler
+  fast-glob  <=2.2.7
+  Depends on vulnerable versions of glob-parent
+  node_modules/fast-glob
+
+node-forge  <=1.2.1
+Severity: moderate
+Open Redirect in node-forge - https://github.com/advisories/GHSA-8fr3-hfg3-gpgp
+Improper Verification of Cryptographic Signature in `node-forge` - https://github.com/advisories/GHSA-2r2c-g63r-vccr
+fix available via `npm audit fix`
+node_modules/node-forge
+  parcel-bundler  >=1.4.0
+  Depends on vulnerable versions of @parcel/watcher
+  Depends on vulnerable versions of css-modules-loader-core
+  Depends on vulnerable versions of fast-glob
+  Depends on vulnerable versions of node-forge
+  node_modules/parcel-bundler
+
+nth-check  <2.0.1
+Severity: moderate
+Inefficient Regular Expression Complexity in nth-check - https://github.com/advisories/GHSA-rp65-9cf3-cjxr
+fix available via `npm audit fix`
+node_modules/nth-check
+  css-select  <=3.1.0
+  Depends on vulnerable versions of nth-check
+  node_modules/css-select
+    svgo  1.0.0 - 1.3.2
+    Depends on vulnerable versions of css-select
+    node_modules/svgo
+      htmlnano  0.1.7 - 0.2.9
+      Depends on vulnerable versions of cssnano
+      Depends on vulnerable versions of purgecss
+      Depends on vulnerable versions of svgo
+      node_modules/htmlnano
+      postcss-svgo  4.0.0-nightly.2020.1.9 - 5.0.0-rc.2
+      Depends on vulnerable versions of svgo
+      node_modules/postcss-svgo
+        cssnano-preset-default  <=4.0.8
+        Depends on vulnerable versions of postcss-svgo
+        node_modules/cssnano-preset-default
+          cssnano  4.0.0-nightly.2020.1.9 - 4.1.11
+          Depends on vulnerable versions of cssnano-preset-default
+          node_modules/cssnano
+
+postcss  <=7.0.35
+Severity: moderate
+Regular Expression Denial of Service in postcss - https://github.com/advisories/GHSA-566m-qj78-rww5
+Regular Expression Denial of Service in postcss - https://github.com/advisories/GHSA-hwj9-h5mp-3pm3
+fix available via `npm audit fix`
+node_modules/css-modules-loader-core/node_modules/postcss
+node_modules/postcss-modules-extract-imports/node_modules/postcss
+node_modules/postcss-modules-local-by-default/node_modules/postcss
+node_modules/postcss-modules-scope/node_modules/postcss
+node_modules/postcss-modules-values/node_modules/postcss
+node_modules/purgecss/node_modules/postcss
+  css-modules-loader-core  *
+  Depends on vulnerable versions of postcss
+  Depends on vulnerable versions of postcss-modules-values
+  node_modules/css-modules-loader-core
+    parcel-bundler  >=1.4.0
+    Depends on vulnerable versions of @parcel/watcher
+    Depends on vulnerable versions of css-modules-loader-core
+    Depends on vulnerable versions of fast-glob
+    Depends on vulnerable versions of node-forge
+    node_modules/parcel-bundler
+  postcss-modules-extract-imports  <=1.2.1
+  Depends on vulnerable versions of postcss
+  node_modules/postcss-modules-extract-imports
+  postcss-modules-local-by-default  <=1.2.0
+  Depends on vulnerable versions of postcss
+  node_modules/postcss-modules-local-by-default
+  postcss-modules-scope  <=1.1.0
+  Depends on vulnerable versions of postcss
+  node_modules/postcss-modules-scope
+  postcss-modules-values  <=1.3.0
+  Depends on vulnerable versions of postcss
+  node_modules/postcss-modules-values
+  purgecss  <=1.0.1 || 2.0.1-beta.0 - 3.0.0
+  Depends on vulnerable versions of postcss
+  node_modules/purgecss
+    htmlnano  0.1.7 - 0.2.9
+    Depends on vulnerable versions of cssnano
+    Depends on vulnerable versions of purgecss
+    Depends on vulnerable versions of svgo
+    node_modules/htmlnano
+
+20 vulnerabilities (15 moderate, 5 high)
+
+To address all issues, run:
+  npm audit fix
+PS C:\Users\Owner\Documents\careerfoundry\myFlix-client>
