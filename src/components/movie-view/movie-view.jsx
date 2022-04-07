@@ -4,10 +4,7 @@ export class MovieView extends React.Component {
     render() {
         const { movie, onBackClick } = this.props;
         return (
-            <div className="movie-view">
-                <div className="movie-poster">
-                    <img src={movie.ImagePath} />
-                </div>
+            <div>
                 <div className="movie-title">
                     <span className="label">Title: </span>
                     <span className="value">{movie.Title}</span>
@@ -25,7 +22,8 @@ export class MovieView extends React.Component {
                     <span className="value">{movie.Director}</span>
                 </div>
                 <button onClick={() => { onBackClick(null); }}>Back</button>
-            </div>
+            </div> // onClick() event listener sets selectedMovie variable in main-view to null, allowing to return back to list of MovieCards
+
         );
     }
 }
