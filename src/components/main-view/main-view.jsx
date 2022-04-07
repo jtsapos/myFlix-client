@@ -11,24 +11,28 @@ class MainView extends React.Component {
     //Also, it will initialize the component’s this variable. Keep in mind that calling super() is a mandatory step whenever you want to include the constructor() method in your component.
 
     this.state = {
-      movies: [],
+      movies: [
+        { _id: 1, Title: 'Inception', Description: 'desc1...', Director: 'dir1' },
+        { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', Director: 'dir2' },
+        { _id: 3, Title: 'Gladiator', Description: 'desc3...', Director: 'dir3' }
+      ],
       selectedMovie: null,
       // Set initial user state to null, used for user login --> Default is logged out
       user: null
     };
   }
 
-  componentDidMount() {
-    axios.get('https://myflixs.herokuapp.com/movies')
-      .then(response => {
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  //componentDidMount() {
+  //axios.get('https://myflixs.herokuapp.com/movies')
+  //.then(response => {
+  //this.setState({
+  //movies: response.data
+  //});
+  //})
+  //.catch(error => {
+  //console.log(error);
+  //});
+  //}
 
   setSelectedMovie(newSelectedMovie) {
     this.setState({
