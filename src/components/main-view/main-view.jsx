@@ -2,6 +2,8 @@
 // myFlix-client/src/main-view/main-view.jsx
 import React from 'react';
 import axios from 'axios'; //An ajax operation, Axios will fetch the movies, then set the state of movies using this.setState.
+
+import { LoginView } from '../login-view/login-view'; //LoginView is imported here to get the user details from the MainView
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
@@ -10,12 +12,11 @@ class MainView extends React.Component {
   constructor() { //REACT uses Constructor method to allow components to be rendered in the DOM. If you don’t use the constructor() method, you can’t include any extra code to be executed at the point where the component is created. 
     super(); //super()will call the parent React.Component’s constructor, which will give your class the actual React component’s features. 
     //Also, it will initialize the component’s 'this' variable. Keep in mind that calling super() is a mandatory step whenever you want to include the constructor() method in your component.
-
+    // Initial state is set to null
     this.state = {
       movies: [],
       selectedMovie: null,
-      // Set initial user state to null, used for user login --> Default is logged out
-      user: null
+      user: null // Set initial user state to null, used for user login --> Default is logged out. The LoginView is rendered as long as there's no user in the state. 
     };
   }
 
@@ -31,18 +32,31 @@ class MainView extends React.Component {
       });
   }
 
-  setSelectedMovie(newSelectedMovie) {
+  setSelectedMovie(movie) { /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/
     this.setState({
-      selectedMovie: newSelectedMovie
+      selectedMovie: movie
+    });
+  }
+
+  onLoggedIn(user) { /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
+    this.setState({
+      user
     });
   }
 
   render() { //render() method is the only mandatory method for a class component.
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie, user } = this.state;
 
+    /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
+    // Before the movies have been loaded
     if (movies.length === 0) return <div className="main-view" />;
+
     return (
       <div className="main-view">
+
+        {/*If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned*/}
         {selectedMovie ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
           : movies.map(movie => (
             <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }} />
