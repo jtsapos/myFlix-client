@@ -24345,54 +24345,36 @@ $parcel$ReactRefreshHelpers$35bf.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+//In React, each component has a set of methods that lets you run a piece of code at specific points within the component’s lifetime. constructor(),componenetDidMount()etc.
 // myFlix-client/src/main-view/main-view.jsx
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _axios = require("axios");
+var _axios = require("axios"); //An ajax operation, Axios will fetch the movies, then set the state of movies using this.setState.
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
 class MainView extends _reactDefault.default.Component {
     constructor(){
-        //REACT uses Constructor method to allow component to be rendered in the DOM. If you don’t use the constructor() method, you can’t include any extra code to be executed at the point where the component is created. 
+        //REACT uses Constructor method to allow components to be rendered in the DOM. If you don’t use the constructor() method, you can’t include any extra code to be executed at the point where the component is created. 
         super(); //super()will call the parent React.Component’s constructor, which will give your class the actual React component’s features. 
-        //Also, it will initialize the component’s this variable. Keep in mind that calling super() is a mandatory step whenever you want to include the constructor() method in your component.
+        //Also, it will initialize the component’s 'this' variable. Keep in mind that calling super() is a mandatory step whenever you want to include the constructor() method in your component.
         this.state = {
-            movies: [
-                {
-                    _id: 1,
-                    Title: 'Inception',
-                    Description: 'desc1...',
-                    Director: 'dir1'
-                },
-                {
-                    _id: 2,
-                    Title: 'The Shawshank Redemption',
-                    Description: 'desc2...',
-                    Director: 'dir2'
-                },
-                {
-                    _id: 3,
-                    Title: 'Gladiator',
-                    Description: 'desc3...',
-                    Director: 'dir3'
-                }
-            ],
+            movies: [],
             selectedMovie: null,
             // Set initial user state to null, used for user login --> Default is logged out
             user: null
         };
     }
-    //axios.get('https://myflixs.herokuapp.com/movies')
-    //.then(response => {
-    //this.setState({
-    //movies: response.data
-    //});
-    //})
-    //.catch(error => {
-    //console.log(error);
-    //});
-    //}
+    componentDidMount() {
+        //inside the componentDidMount() lifecycle method, query your myFlix API server’s /movies endpoint with a get request using Axios. Code executed right after the component is added to the DOM
+        _axiosDefault.default.get('https://myflixs.herokuapp.com/movies').then((response)=>{
+            this.setState({
+                movies: response.data
+            });
+        }).catch((error)=>{
+            console.log(error);
+        });
+    }
     setSelectedMovie(newSelectedMovie) {
         this.setState({
             selectedMovie: newSelectedMovie
@@ -24400,7 +24382,7 @@ class MainView extends _reactDefault.default.Component {
     }
     render() {
         //render() method is the only mandatory method for a class component.
-        const { movies , selectedMovie  } = this.state; //if (selectedMovie) return <MovieView movie={selectedMovie} />;
+        const { movies , selectedMovie  } = this.state;
         if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "main-view"
         }));
