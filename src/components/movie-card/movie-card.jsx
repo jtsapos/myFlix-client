@@ -9,6 +9,11 @@ export class MovieCard extends React.Component {
     }
 }
 
+/* Use propTypes to validate data types of props
+    Validation logic:
+    movie object is required, if object contains a title, the Title has to be a string
+    onMovieClick function is required
+*/
 MovieCard.propTypes = {
     movie: PropTypes.shape({
         Title: PropTypes.string.isRequired,
