@@ -4,6 +4,7 @@ import React from 'react';
 import axios from 'axios'; //An ajax operation, Axios will fetch the movies, then set the state of movies using this.setState.
 
 import { LoginView } from '../login-view/login-view'; //LoginView is imported here to get the user details from the MainView
+import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
