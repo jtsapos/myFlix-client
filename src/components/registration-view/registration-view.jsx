@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 
 // Create RegistrationView as function component using Hooks
@@ -41,3 +42,11 @@ export function RegistrationView(props) {
         </form>
     );
 }
+RegistrationView.propTypes = {
+    register: PropTypes.shape({
+        Username: PropTypes.string.isRequired,
+        Password: PropTypes.string.isRequired,
+        Email: PropTypes.string.isRequired,
+    }),
+    onRegistration: PropTypes.func.isRequired
+};
