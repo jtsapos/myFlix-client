@@ -1,5 +1,6 @@
 //useState() creates a local state and preserves it between the render cycles, giving you one of the biggest advantages of declaring a class component without having to actually declare it
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 
 // Create LoginView as function component using Hooks
@@ -31,3 +32,10 @@ export function LoginView(props) {
         </form>
     );
 }
+LoginView.propTypes = {
+    user: PropTypes.shape({
+        username: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired
+    }),
+    onLoggedIn: PropTypes.func.isRequired
+};
