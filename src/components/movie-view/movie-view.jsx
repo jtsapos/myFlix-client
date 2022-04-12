@@ -17,11 +17,11 @@ export class MovieView extends React.Component {
                 </div>
                 <div className="movie-genre">
                     <span className="label">Genre: </span>
-                    <span className="value">{movie.Genre}</span>
+                    <span className="value">{movie.Genre.Name}</span>
                 </div>
                 <div className="movie-director">
                     <span className="label">Director: </span>
-                    <span className="value">{movie.Director}</span>
+                    <span className="value">{movie.Director.Name}</span>
                 </div>
                 <button onClick={() => { onBackClick(null); }}>Back</button>
             </div> // onClick() event listener sets selectedMovie variable in main-view to null, allowing to return back to list of MovieCards
@@ -37,7 +37,16 @@ export class MovieView extends React.Component {
 */
 MovieView.propTypes = {
     movie: propTypes.shape({
-        Title: propTypes.string
+        Title: propTypes.string,
+        Description: propTypes.string.isRequired,
+        Genre: propTypes.shape({
+            Name: propTypes.string.isRequired
+        }),
+        Director: propTypes.shape({
+            Name: propTypes.string.isRequired
+        })
+        //Actors: propTypes.string.isRequired,
+        //ImagePath: propTypes.string.isRequired
     }).isRequired,
     onBackClick: propTypes.func.isRequired
 };
