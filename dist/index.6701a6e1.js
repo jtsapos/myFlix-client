@@ -24351,6 +24351,8 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _axios = require("axios"); //An ajax operation, Axios will fetch the movies, then set the state of movies using this.setState.
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _loginView = require("../login-view/login-view"); //LoginView is imported here to get the user details from the MainView
 var _registrationView = require("../registration-view/registration-view");
 var _movieCard = require("../movie-card/movie-card");
@@ -24414,6 +24416,8 @@ class MainView extends _reactDefault.default.Component {
         )));
     }
 }
+MainView.propTypes = {
+};
 exports.default = MainView;
 
   $parcel$ReactRefreshHelpers$35bf.postlude(module);
@@ -24421,7 +24425,7 @@ exports.default = MainView;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"6TuXu","axios":"iYoWk","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","@parcel/transformer-js/src/esmodule-helpers.js":"lG0KC","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fqXBZ","../login-view/login-view":"054li","../registration-view/registration-view":"aP2YV"}],"iYoWk":[function(require,module,exports) {
+},{"react":"6TuXu","axios":"iYoWk","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","@parcel/transformer-js/src/esmodule-helpers.js":"lG0KC","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fqXBZ","../login-view/login-view":"054li","../registration-view/registration-view":"aP2YV","prop-types":"1tgq3"}],"iYoWk":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"3QmO2"}],"3QmO2":[function(require,module,exports) {
@@ -26019,10 +26023,12 @@ class MovieCard extends _reactDefault.default.Component {
     movie: _propTypesDefault.default.shape({
         Title: _propTypesDefault.default.string.isRequired,
         Description: _propTypesDefault.default.string.isRequired,
-        Genre: _propTypesDefault.default.string.isRequired,
-        Director: _propTypesDefault.default.string.isRequired,
-        Actors: _propTypesDefault.default.string.isRequired,
-        ImagePath: _propTypesDefault.default.string.isRequired
+        Genre: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        }),
+        Director: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        }) //Actors: PropTypes.string.isRequired,
     }).isRequired,
     onMovieClick: _propTypesDefault.default.func.isRequired
 };
@@ -26820,13 +26826,13 @@ class MovieView extends _reactDefault.default.Component {
             className: "label"
         }, "Genre: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value"
-        }, movie.Genre)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        }, movie.Genre.Name)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-director"
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label"
         }, "Director: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value"
-        }, movie.Director)), /*#__PURE__*/ _reactDefault.default.createElement("button", {
+        }, movie.Director.Name)), /*#__PURE__*/ _reactDefault.default.createElement("button", {
             onClick: ()=>{
                 onBackClick(null);
             }
@@ -26840,7 +26846,14 @@ class MovieView extends _reactDefault.default.Component {
     onBackClick function is required
 */ MovieView.propTypes = {
     movie: _propTypesDefault.default.shape({
-        Title: _propTypesDefault.default.string
+        Title: _propTypesDefault.default.string,
+        Description: _propTypesDefault.default.string.isRequired,
+        Genre: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        }),
+        Director: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        }) //Actors: propTypes.string.isRequired,
     }).isRequired,
     onBackClick: _propTypesDefault.default.func.isRequired
 };
@@ -26862,8 +26875,10 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "LoginView", ()=>LoginView
 );
 //useState() creates a local state and preserves it between the render cycles, giving you one of the biggest advantages of declaring a class component without having to actually declare it
-var _react = require("react"); // Create LoginView as function component using Hooks
+var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types"); // Create LoginView as function component using Hooks
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _s = $RefreshSig$();
 function LoginView(props) {
     _s();
@@ -26890,6 +26905,13 @@ function LoginView(props) {
 }
 _s(LoginView, "wuQOK7xaXdVz4RMrZQhWbI751Oc=");
 _c = LoginView;
+LoginView.propTypes = {
+    user: _propTypesDefault.default.shape({
+        username: _propTypesDefault.default.string.isRequired,
+        password: _propTypesDefault.default.string.isRequired
+    }),
+    onLoggedIn: _propTypesDefault.default.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "LoginView");
 
@@ -26898,7 +26920,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"lG0KC","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fqXBZ"}],"aP2YV":[function(require,module,exports) {
+},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"lG0KC","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fqXBZ","prop-types":"1tgq3"}],"aP2YV":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8dd4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26909,8 +26931,10 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "RegistrationView", ()=>RegistrationView
 );
-var _react = require("react"); // Create RegistrationView as function component using Hooks
+var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types"); // Create RegistrationView as function component using Hooks
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _s = $RefreshSig$();
 function RegistrationView(props) {
     _s();
@@ -26947,6 +26971,14 @@ function RegistrationView(props) {
 }
 _s(RegistrationView, "tdA1KK8yaZidqYo0wscqshHt/KE=");
 _c = RegistrationView;
+RegistrationView.propTypes = {
+    register: _propTypesDefault.default.shape({
+        Username: _propTypesDefault.default.string.isRequired,
+        Password: _propTypesDefault.default.string.isRequired,
+        Email: _propTypesDefault.default.string.isRequired
+    }),
+    onRegistration: _propTypesDefault.default.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "RegistrationView");
 
@@ -26955,6 +26987,6 @@ $RefreshReg$(_c, "RegistrationView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"lG0KC","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fqXBZ"}]},["jDJ9U","ijx4u","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"lG0KC","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fqXBZ","prop-types":"1tgq3"}]},["jDJ9U","ijx4u","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map
