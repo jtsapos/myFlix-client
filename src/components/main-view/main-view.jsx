@@ -64,23 +64,27 @@ class MainView extends React.Component {
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-      <div className="main-view">
-
-        {/*If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned*/}
-        {selectedMovie ? (
-          <Row className="justify-content-md-center">
-            <Col md={8}>
-              <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} /> {/*onBackClick prop is used in movie-view <button> element as function passed to onClick() event listener*/}
-            </Col>
-          </Row>
-        )
-          : movies.map(movie => (
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }} /> // onMovieClick prop is used in movie-card <div> element as function passed to onClick() event listener
-          ))
-        }
-      </div>
+      <Container>
+        <Row className="main-view justify-content-md-center">
+          {/*If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned*/}
+          {selectedMovie
+            ? (
+              <Col md={8}>
+                <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} /> {/*onBackClick prop is used in movie-view <button> element as function passed to onClick() event listener*/}
+              </Col>
+            )
+            : movies.map(movie => (
+              <Col md={3}>
+                <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie); }} /> // onMovieClick prop is used in movie-card <div> element as function passed to onClick() event listener
+              </Col>
+            ))
+          }
+        </Row>
+      </Container>
     );
+
   }
+
 }
 MainView.propTypes = {};
 
