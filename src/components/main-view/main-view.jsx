@@ -4,6 +4,7 @@ import React from 'react';
 import axios from 'axios'; //An ajax operation, Axios will fetch the movies, then set the state of movies using this.setState.
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row'; //import the Row Bootstrap component into “main-view.jsx"
+import Col from 'react-bootstrap/Col'; //import the Col Bootstrap component into “main-view.jsx"
 import { LoginView } from '../login-view/login-view'; //LoginView is imported here to get the user details from the MainView
 import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -67,8 +68,10 @@ class MainView extends React.Component {
 
         {/*If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned*/}
         {selectedMovie ? (
-          <Row>
-            <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} /> {/*onBackClick prop is used in movie-view <button> element as function passed to onClick() event listener*/}
+          <Row className="justify-content-md-center">
+            <Col md={8}>
+              <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} /> {/*onBackClick prop is used in movie-view <button> element as function passed to onClick() event listener*/}
+            </Col>
           </Row>
         )
           : movies.map(movie => (
