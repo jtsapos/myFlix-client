@@ -16,21 +16,23 @@ export function LoginView(props) {
 
 
     const handleSubmit = (e) => {
-        e.preventDefault();    //// prevent default submit button behaviour, i.e., don't reload the page
+        e.preventDefault();
 
         /* Send a request to the server for authentication */
-        axios.post('https://myflixs.herokuapp.com/login', {
-            Username: username, //POST request is made to the login endpoint by passing the username and password.
+        axios.post('https://movieanorak.herokuapp.com/login', {
+            Username: username,
             Password: password
         })
             .then(response => {
                 const data = response.data;
-                props.onLoggedIn(data); /* if there's a match then call props.onLoggedIn(data i.e.username,password and token) */
+                props.onLoggedIn(data);
             })
             .catch(e => {
                 console.log('no such user')
             });
+
     };
+
 
     return (
         <Form>
