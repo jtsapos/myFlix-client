@@ -1,31 +1,33 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import "./movie-view.scss"
+
+import { Card, Col, Container, Row, Button } from "react-bootstrap";
 
 export class MovieView extends React.Component {
 
     render() {
         const { movie, onBackClick } = this.props;
-        return (
-            <div>
-                <div className="movie-title">
-                    <span className="label">Title: </span>
-                    <span className="value">{movie.Title}</span>
-                </div>
-                <div className="movie-description">
-                    <span className="label">Description: </span>
-                    <span className="value">{movie.Description}</span>
-                </div>
-                <div className="movie-genre">
-                    <span className="label">Genre: </span>
-                    <span className="value">{movie.Genre.Name}</span>
-                </div>
-                <div className="movie-director">
-                    <span className="label">Director: </span>
-                    <span className="value">{movie.Director.Name}</span>
-                </div>
-                <button onClick={() => { onBackClick(null); }}>Back</button>
-            </div> // onClick() event listener sets selectedMovie variable in main-view to null, allowing to return back to list of MovieCards
 
+        return (
+            <Container>
+                <Row>
+                    <Col>
+                        <Card id="movie-view">
+                            <Card.Body>
+                                <Card.Img id="movie-view-image" variant="top" src={movie.ImagePath} />
+                                <Card.Title id="movie-title" className="movie-title">{movie.Title}</Card.Title>
+                                <Card.Text id="movie-description" className="movie-description">{movie.Description}</Card.Text>
+                                <Card.Text id="movie-director" className="movie-director">Director: {movie.Director.Name}</Card.Text>
+                                <Card.Text id="movie-genre" className="movie-gerne">Genre: {movie.Genre.Name}</Card.Text>
+
+                            </Card.Body>
+                        </Card>
+                        <Button id="movie-view-button" onClick={() => { onBackClick(null); }}>Back</Button> {/*onClick() event listener sets selectedMovie variable in main-view to null, allowing to return back to list of MovieCards*/}
+                        <Button id="movie-view-button" onClick={() => { }}>Add to favorites</Button>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 }
