@@ -3,10 +3,10 @@
 import React from 'react';
 import axios from 'axios'; //An ajax operation, Axios will fetch the movies, then set the state of movies using this.setState.
 import PropTypes from 'prop-types';
-import Row from 'react-bootstrap/Row'; //import the Row Bootstrap component into “main-view.jsx"
-import Col from 'react-bootstrap/Col'; //import the Col Bootstrap component into “main-view.jsx"
-import { LoginView } from '../login-view/login-view'; //LoginView is imported here to get the user details from the MainView
+import { Col, Row, Container } from "react-bootstrap";
+
 import { RegistrationView } from '../registration-view/registration-view';
+import { LoginView } from '../login-view/login-view'; //LoginView is imported here to get the user details from the MainView
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
@@ -42,9 +42,9 @@ class MainView extends React.Component {
   }
 
   /* User registers */
-  onRegistration(registration) {
+  onRegistration(register) {
     this.setState({
-      registration,
+      register,
     });
   }
 
@@ -55,10 +55,10 @@ class MainView extends React.Component {
   }
 
   render() { //render() method is the only mandatory method for a class component.
-    const { movies, selectedMovie, user } = this.state;
+    const { movies, selectedMovie, user, register } = this.state;
 
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    //if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
     // Before the movies have been loaded
     if (movies.length === 0) return <div className="main-view" />;
@@ -69,15 +69,26 @@ class MainView extends React.Component {
           {/*If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned*/}
           {selectedMovie
             ? (
-              <Col md={8}>
-                <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} /> {/*onBackClick prop is used in movie-view <button> element as function passed to onClick() event listener*/}
+              <Col md={6}>
+                <MovieView movie={selectedMovie}
+                  onBackClick={newSelectedMovie => { /*onBackClick prop is used in movie-view <button> element as function passed to onClick() event listener*/
+                    this.setSelectedMovie(newSelectedMovie);
+                  }}
+                />
               </Col>
             )
-            : movies.map(movie => (
-              <Col md={3}>
-                <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie); }} /> // onMovieClick prop is used in movie-card <div> element as function passed to onClick() event listener
-              </Col>
-            ))
+            : (
+              movies.map(movie => (
+                <Col md={6} lg={4}>
+                  <MovieCard key={movie._id}
+                    movie={movie}
+                    onMovieClick={(newSelectedMovie) => {
+                      this.setSelectedMovie(newSelectedMovie);
+                    }}
+                  /> {/*onMovieClick prop is used in movie-card <div> element as function passed to onClick() event listener*/}
+                </Col>
+              ))
+            )
           }
         </Row>
       </Container>
