@@ -12,7 +12,7 @@ export class MovieCard extends React.Component {
             <Container>
                 <CardGroup>
                     <Card id="movie-card">
-                        <Card.Img variant="top" src={movie.ImagePath} />
+                        <a><Card.Img variant="top" src={movie.ImagePath} /></a>
                         <Card.Body>
                             <Card.Title id="card-title">{movie.Title}</Card.Title>
                             <Card.Text>{movie.Description}</Card.Text>
