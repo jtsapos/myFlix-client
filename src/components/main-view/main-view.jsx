@@ -9,6 +9,8 @@ import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view'; //LoginView is imported here to get the user details from the MainView
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { NavbarView } from "../navbar-view/navbar-view";
+
 
 class MainView extends React.Component {
 
@@ -44,7 +46,7 @@ class MainView extends React.Component {
   /* User registers */
   onRegistration(register) {
     this.setState({
-      register,
+      register
     });
   }
 
@@ -65,6 +67,10 @@ class MainView extends React.Component {
 
     return (
       <Container>
+        <Row>
+          <NavbarView user={user} />
+        </Row>
+
         <Row className="main-view justify-content-md-center">
           {/*If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned*/}
           {selectedMovie
