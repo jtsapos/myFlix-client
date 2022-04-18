@@ -3,6 +3,7 @@
 import React from 'react';
 import axios from 'axios'; //An ajax operation, Axios will fetch the movies, then set the state of movies using this.setState.
 import PropTypes from 'prop-types';
+import './main-view.scss';
 import { Col, Row, Container } from "react-bootstrap";
 
 import { RegistrationView } from '../registration-view/registration-view';
