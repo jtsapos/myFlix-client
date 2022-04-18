@@ -13,7 +13,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { NavbarView } from "../navbar-view/navbar-view";
 
 
-class MainView extends React.Component {
+export class MainView extends React.Component {
 
   constructor() { //REACT uses Constructor method to allow components to be rendered in the DOM. If you don’t use the constructor() method, you can’t include any extra code to be executed at the point where the component is created. 
     super(); //super()will call the parent React.Component’s constructor, which will give your class the actual React component’s features. 
@@ -106,4 +106,3 @@ class MainView extends React.Component {
 }
 MainView.propTypes = {};
 
-export default MainView;
