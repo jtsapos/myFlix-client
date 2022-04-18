@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button, } from "react-bootstrap";
 
+import './login-view.scss';
+
 
 // Create LoginView as function component using Hooks
 export function LoginView(props) {
