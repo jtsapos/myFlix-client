@@ -5,7 +5,7 @@
   font-family: League Spartan, sans-serif;
 }
 
-* {
+* * {
   box-sizing: border-box;
   color: #fff;
   background-color: #353535;
@@ -138,8 +138,8 @@
   font-family: League Spartan, sans-serif;
 }
 
-#main-view {
-  margin-top: 100px;
+.my-flix {
+  color: #4682b4;
 }
 
 /*# sourceMappingURL=index.3bb28fe2.css.map */
