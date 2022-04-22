@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import './registration-view.scss';
 import { Form, Button, Card, CardGroup, Container, Col, Row } from 'react-bootstrap';
@@ -60,7 +61,7 @@ export function RegistrationView(props) {
                                             value={email}
                                             onChange={e => setEmail(e.target.value)}
                                             required
-                                            placeholder="Enter your email adress"
+                                            placeholder="Enter your email address"
                                         />
                                     </Form.Group>
 
