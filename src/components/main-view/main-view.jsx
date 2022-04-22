@@ -61,9 +61,9 @@ export class MainView extends React.Component {
   render() {  //render() method is the only mandatory method for a class component.
     const { movies, selectedMovie, user, register } = this.state;
 
-    // if (!register) return <RegistrationView onRegistration={(register) => this.onRegistration(register)} />;
+    if (!register) return <RegistrationView onRegistration={(register) => this.onRegistration(register)} />;
 
-    // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
     //if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
