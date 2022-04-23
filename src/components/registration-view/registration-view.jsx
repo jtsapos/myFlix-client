@@ -70,6 +70,7 @@ export function RegistrationView(props) {
                                         onClick={handleSubmit}>
                                         Register
                                     </Button>
+                                    <Button id="movie-view-button" onClick={() => { onBackClick(null); }}>Back</Button>
                                 </Form>
                             </Card.Body>
                         </Card>
