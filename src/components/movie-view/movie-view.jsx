@@ -49,7 +49,7 @@ MovieView.propTypes = {
             Birth: PropTypes.string.isRequired
         }),
         //Actors: PropTypes.array,
-        ImagePath: PropTypes.string.isRequired,
+        ImagePath: PropTypes.string
     }).isRequired
 };
 
