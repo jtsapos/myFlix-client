@@ -36,7 +36,7 @@ MovieCard.propTypes = {
         Director: PropTypes.shape({
             Name: PropTypes.string.isRequired
         }),
-        Actors: PropTypes.string.isRequired,
+        //Actors: PropTypes.array.length,
         ImagePath: PropTypes.string.isRequired,
     }).isRequired,
     onMovieClick: PropTypes.func.isRequired
@@ -48,18 +48,3 @@ MovieCard.propTypes = {
     movie object is required, if object contains a title, the Title has to be a string
     onMovieClick function is required
 */
-//MovieCard.propTypes = {
-  //  movie: PropTypes.shape({
-  //      Title: PropTypes.string.isRequired,
-  //      Description: PropTypes.string.isRequired,
-  //      Genre: PropTypes.shape({
-  //          Name: PropTypes.string.isRequired
-  //      }),
-  //      Director: PropTypes.shape({
-  //          Name: PropTypes.string.isRequired
-  //      }),
-  //      Actors: PropTypes.string.isRequired,
-  //      ImagePath: PropTypes.shape
-  //  }).isRequired,
-  //  onMovieClick: PropTypes.func.isRequired
-//};
