@@ -65,6 +65,7 @@
   min-height: 500px;
   border-width: 10px;
   border-color: #e5383b;
+  border-top-style: none;
 }
 
 #movie-view-image {
