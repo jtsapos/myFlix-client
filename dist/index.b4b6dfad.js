@@ -26039,35 +26039,16 @@ class MainView extends _reactDefault.default.Component {
     }
     render() {
         //render() method is the only mandatory method for a class component.
-        const { movies , selectedMovie , user: user1 , register: register1  } = this.state;
-        if (!register1) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_registrationView.RegistrationView, {
-            onRegistration: (register)=>this.onRegistration(register)
-        }, void 0, false, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 72,
-            columnNumber: 27
-        }, this);
-        if (!user1) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {
-            onLoggedIn: (user)=>this.onLoggedIn(user)
-        }, void 0, false, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 73,
-            columnNumber: 23
-        }, this);
+        const { movies , selectedMovie , user , register  } = this.state; //if (!register) return <RegistrationView onRegistration={(register) => this.onRegistration(register)} />;
+        //if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
         /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/ //if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
         // Before the movies have been loaded
-        if (movies.length === 0) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-            className: "main-view"
-        }, void 0, false, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 78,
-            columnNumber: 37
-        }, this);
+        //if (movies.length === 0) return <div className="main-view" />;
         return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
             children: [
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Row, {
                     children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_navbarView.NavbarView, {
-                        user: user1
+                        user: user
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
                         lineNumber: 81,
@@ -36848,6 +36829,17 @@ function RegistrationView(props) {
                                             fileName: "src/components/registration-view/registration-view.jsx",
                                             lineNumber: 48,
                                             columnNumber: 37
+                                        }, this),
+                                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Button, {
+                                            id: "movie-view-button",
+                                            onClick: ()=>{
+                                                onBackClick(null);
+                                            },
+                                            children: "Back"
+                                        }, void 0, false, {
+                                            fileName: "src/components/registration-view/registration-view.jsx",
+                                            lineNumber: 51,
+                                            columnNumber: 37
                                         }, this)
                                     ]
                                 }, void 0, true, {
@@ -37237,7 +37229,7 @@ MovieCard.propTypes = {
         Director: _propTypesDefault.default.shape({
             Name: _propTypesDefault.default.string.isRequired
         }),
-        Actors: _propTypesDefault.default.string.isRequired,
+        //Actors: PropTypes.array.length,
         ImagePath: _propTypesDefault.default.string.isRequired
     }).isRequired,
     onMovieClick: _propTypesDefault.default.func.isRequired
@@ -37246,21 +37238,7 @@ MovieCard.propTypes = {
     Validation logic:
     movie object is required, if object contains a title, the Title has to be a string
     onMovieClick function is required
-*/  //MovieCard.propTypes = {
- //  movie: PropTypes.shape({
- //      Title: PropTypes.string.isRequired,
- //      Description: PropTypes.string.isRequired,
- //      Genre: PropTypes.shape({
- //          Name: PropTypes.string.isRequired
- //      }),
- //      Director: PropTypes.shape({
- //          Name: PropTypes.string.isRequired
- //      }),
- //      Actors: PropTypes.string.isRequired,
- //      ImagePath: PropTypes.shape
- //  }).isRequired,
- //  onMovieClick: PropTypes.func.isRequired
- //};
+*/ 
 
   $parcel$ReactRefreshHelpers$67b2.postlude(module);
 } finally {
@@ -37409,7 +37387,7 @@ MovieView.propTypes = {
             Bio: _propTypesDefault.default.string.isRequired,
             Birth: _propTypesDefault.default.string.isRequired
         }),
-        Actors: _propTypesDefault.default.array,
+        //Actors: PropTypes.array,
         ImagePath: _propTypesDefault.default.string.isRequired
     }).isRequired
 }; //export default MovieView;
