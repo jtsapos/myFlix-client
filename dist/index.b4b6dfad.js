@@ -37230,7 +37230,7 @@ MovieCard.propTypes = {
             Name: _propTypesDefault.default.string.isRequired
         }),
         //Actors: PropTypes.array.length,
-        ImagePath: _propTypesDefault.default.string.isRequired
+        ImagePath: _propTypesDefault.default.string
     }).isRequired,
     onMovieClick: _propTypesDefault.default.func.isRequired
 }; //export default MovieCard;
@@ -37388,7 +37388,7 @@ MovieView.propTypes = {
             Birth: _propTypesDefault.default.string.isRequired
         }),
         //Actors: PropTypes.array,
-        ImagePath: _propTypesDefault.default.string.isRequired
+        ImagePath: _propTypesDefault.default.string
     }).isRequired
 }; //export default MovieView;
  /* Use propTypes to validate data types of props
