@@ -65,8 +65,6 @@
   min-height: 500px;
   border-width: 10px;
   border-color: #e5383b;
-  border-top-style: none;
-  padding-top: 1000%;
 }
 
 #movie-view-image {
@@ -137,7 +135,7 @@
   box-sizing: border-box;
   color: #f1fffa;
   background-color: #020402;
-  padding-top: 3000%;
+  padding-top: 0%;
   font-family: League Spartan, sans-serif;
 }
 
