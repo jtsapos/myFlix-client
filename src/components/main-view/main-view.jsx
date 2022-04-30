@@ -73,6 +73,7 @@ export class MainView extends React.Component {
 
     return (
       <Container>
+
         <Row>
           <NavbarView user={user} />
 
@@ -102,11 +103,12 @@ export class MainView extends React.Component {
             )
           }
         </Row>
+
       </Container>
     );
   }
 }
-export default MainView;
+//export default MainView;
 
 MainView.propTypes = {};
 
