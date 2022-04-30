@@ -1,8 +1,10 @@
 $backgroundColor: #020402;
 $textColor: #f1fffa;
 
+
 * {
     box-sizing: border-box;
+    padding-top: percentage($number: 30);
     font-family: "League Spartan", sans-serif;
     background-color: $backgroundColor;
     color: $textColor;
