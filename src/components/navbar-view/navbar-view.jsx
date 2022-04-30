@@ -12,17 +12,18 @@ export function NavbarView({ user }) {
     };
 
     return (
-        <Container id="navbar-container">
-            <Navbar id="navbar" static="top">
 
+
+        <Navbar id="navbar" static="top">
+            <Container id="navbar-container">
                 <Navbar.Brand id="navbar-brand" href="#">myFlix</Navbar.Brand>
                 <Nav id="nav" className="me-auto">
                     <Nav.Link id="nav-link" href="#home">Account</Nav.Link>
                     <Nav.Link id="nav-link" href="#features">Watchlist</Nav.Link>
                     <Nav.Link id="nav-link" href="#register">Register</Nav.Link>
                 </Nav>
+            </Container>
+        </Navbar>
 
-            </Navbar>
-        </Container>
     )
 }
