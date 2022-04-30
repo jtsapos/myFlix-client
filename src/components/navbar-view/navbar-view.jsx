@@ -13,7 +13,7 @@ export function NavbarView({ user }) {
 
     return (
         <Container id="navbar-container">
-            <Navbar id="navbar" fixed="top">
+            <Navbar id="navbar" static="top">
 
                 <Navbar.Brand id="navbar-brand" href="#">myFlix</Navbar.Brand>
                 <Nav id="nav" className="me-auto">
