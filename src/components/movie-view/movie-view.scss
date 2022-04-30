@@ -15,8 +15,6 @@ $mainColor: #e5383b;
 }
 
 #movie-view {
-    padding-top: percentage($number: 10);
-    border-top: 20px;
     border-color: $mainColor;
     border-width: 10px;
     min-height: 500px;
