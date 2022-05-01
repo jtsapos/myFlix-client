@@ -12,8 +12,6 @@ export function NavbarView({ user }) {
     };
 
     return (
-
-
         <Navbar id="navbar" static="top">
             <Container id="navbar-container">
                 <Navbar.Brand id="navbar-brand" href="#">myFlix</Navbar.Brand>
