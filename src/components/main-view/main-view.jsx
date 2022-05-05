@@ -24,6 +24,21 @@ export class MainView extends React.Component {
     };
   }
 
+  getMovies(token) {
+    axios.get('https://myflixs.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        // Assign the result to the state
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   componentDidMount() { //inside the componentDidMount() lifecycle method, query your myFlix API server’s /movies endpoint with a get request using Axios. 
     //Code executed right after the component is added to the DOM
     axios.get('https://myflixs.herokuapp.com/movies')
@@ -45,10 +60,15 @@ export class MainView extends React.Component {
   }
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
-  onLoggedIn(user) {
+  onLoggedIn(authData) { //this is updated from login-view (props.onLoggedIn(data))
+    console.log(authData);
     this.setState({
-      user
+      user: authData.user.Username
     });
+
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
   }
 
   /* User registers */
