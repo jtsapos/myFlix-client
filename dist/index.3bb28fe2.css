@@ -92,6 +92,13 @@
   margin-right: 20px;
 }
 
+* {
+  box-sizing: border-box;
+  color: #f1fffa;
+  background-color: #020402;
+  font-family: League Spartan, sans-serif;
+}
+
 :root {
   --fontsize-navbar-brand: 30px;
   --fontsize-navbar-link: 20px;
@@ -130,13 +137,6 @@
   background-color: #e5383b;
   font-size: 20px;
   font-weight: 600;
-}
-
-* {
-  box-sizing: border-box;
-  color: #f1fffa;
-  background-color: #020402;
-  font-family: League Spartan, sans-serif;
 }
 
 .my-flix {
