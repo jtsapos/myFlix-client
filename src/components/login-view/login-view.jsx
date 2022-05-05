@@ -1,5 +1,6 @@
 //useState() creates a local state and preserves it between the render cycles, giving you one of the biggest advantages of declaring a class component without having to actually declare it
 import React, { useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -13,21 +14,31 @@ export function LoginView(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();  // prevent default submit button behaviour, i.e., don't reload the page
-        console.log(username, password);
+
         /* Send a request to the server for authentication */
-        /* then call props.onLoggedIn(username) */
-        props.onLoggedIn(username);
+        axios.post('https://myflixs.herokuapp.com/login', {
+
+            Username: username,
+            Password: password
+        })
+            .then(response => {
+                const data = response.data;
+                props.onLoggedIn(data); //When a user logs in, the props onLoggedIn(data) is passed to the LoginView and triggers the function onLoggedIn(authData) in the MainView
+            })
+            .catch(e => {
+                console.log('no such user')
+            });
     };
 
     return (
         <Form>
             <Form.Group controlId="formUsername">
                 <Form.Label>Username:</Form.Label>
-                <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+                <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
             </Form.Group>
             <Form.Group controlId="formPassword">
                 <Form.Label>Password:</Form.Label>
-                <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+                <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
             </Form.Group>
 
             <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
