@@ -5,7 +5,7 @@
   font-family: League Spartan, sans-serif;
 }
 
-* * {
+* {
   box-sizing: border-box;
   color: #fff;
   background-color: #353535;
@@ -134,9 +134,8 @@
 
 * {
   box-sizing: border-box;
-  color: #e1ece8;
-  background-color: #010801;
-  padding-top: 0%;
+  color: #f1fffa;
+  background-color: #020402;
   font-family: League Spartan, sans-serif;
 }
 
