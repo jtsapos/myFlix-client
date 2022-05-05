@@ -24997,6 +24997,20 @@ class MainView extends _reactDefault.default.Component {
             user: null // Set initial user state to null, used for user login --> Default is logged out. The LoginView is rendered as long as there's no user in the state.
         };
     }
+    getMovies(token) {
+        _axiosDefault.default.get('https://myflixs.herokuapp.com/movies', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            // Assign the result to the state
+            this.setState({
+                movies: response.data
+            });
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
     componentDidMount() {
         //inside the componentDidMount() lifecycle method, query your myFlix API server’s /movies endpoint with a get request using Axios. 
         //Code executed right after the component is added to the DOM
@@ -25013,10 +25027,15 @@ class MainView extends _reactDefault.default.Component {
             selectedMovie: movie
         });
     }
-    /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/ onLoggedIn(user) {
+    /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/ onLoggedIn(authData) {
+        //this is updated from login-view (props.onLoggedIn(data))
+        console.log(authData);
         this.setState({
-            user
+            user: authData.user.Username
         });
+        localStorage.setItem('token', authData.token);
+        localStorage.setItem('user', authData.user.Username);
+        this.getMovies(authData.token);
     }
     /* User registers */ onRegistration(register) {
         this.setState({
@@ -25030,14 +25049,14 @@ class MainView extends _reactDefault.default.Component {
             onLoggedIn: (user)=>this.onLoggedIn(user)
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 75,
+            lineNumber: 95,
             columnNumber: 23
         }, this); // Before the movies have been loaded
         if (movies.length === 0) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
             className: "main-view"
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 77,
+            lineNumber: 97,
             columnNumber: 37
         }, this);
         return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
@@ -25047,12 +25066,12 @@ class MainView extends _reactDefault.default.Component {
                         user: user1
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 81,
+                        lineNumber: 101,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 80,
+                    lineNumber: 100,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Row, {
@@ -25068,12 +25087,12 @@ class MainView extends _reactDefault.default.Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 88,
+                                lineNumber: 108,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 87,
+                            lineNumber: 107,
                             columnNumber: 28
                         }, this) : movies.map((movie)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
                                 md: 6,
@@ -25085,25 +25104,25 @@ class MainView extends _reactDefault.default.Component {
                                     }
                                 }, movie._id, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 92,
+                                    lineNumber: 112,
                                     columnNumber: 19
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 91,
+                                lineNumber: 111,
                                 columnNumber: 44
                             }, this)
                         )
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 84,
+                    lineNumber: 104,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 78,
+            lineNumber: 98,
             columnNumber: 12
         }, this);
     }
@@ -37042,6 +37061,8 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 //useState() creates a local state and preserves it between the render cycles, giving you one of the biggest advantages of declaring a class component without having to actually declare it
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _form = require("react-bootstrap/Form");
@@ -37056,8 +37077,15 @@ function LoginView(props) {
     const [password, setPassword] = _react.useState('');
     const handleSubmit = (e)=>{
         e.preventDefault(); // prevent default submit button behaviour, i.e., don't reload the page
-        console.log(username, password);
-        /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onLoggedIn(username);
+        /* Send a request to the server for authentication */ _axiosDefault.default.post('https://myflixs.herokuapp.com/login', {
+            Username: username,
+            Password: password
+        }).then((response)=>{
+            const data = response.data;
+            props.onLoggedIn(data); //When a user logs in, the props onLoggedIn(data) is passed to the LoginView and triggers the function onLoggedIn(authData) in the MainView
+        }).catch((e)=>{
+            console.log('no such user');
+        });
     };
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_formDefault.default, {
         children: [
@@ -37068,21 +37096,23 @@ function LoginView(props) {
                         children: "Username:"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 26,
+                        lineNumber: 32,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_formDefault.default.Control, {
                         type: "text",
+                        placeholder: "Enter username",
+                        value: username,
                         onChange: (e)=>setUsername(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 27,
+                        lineNumber: 33,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 25,
+                lineNumber: 31,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_formDefault.default.Group, {
@@ -37092,21 +37122,23 @@ function LoginView(props) {
                         children: "Password:"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 30,
+                        lineNumber: 36,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_formDefault.default.Control, {
                         type: "password",
+                        placeholder: "Password",
+                        value: password,
                         onChange: (e)=>setPassword(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 31,
+                        lineNumber: 37,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 29,
+                lineNumber: 35,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_buttonDefault.default, {
@@ -37116,13 +37148,13 @@ function LoginView(props) {
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 34,
+                lineNumber: 40,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 24,
+        lineNumber: 30,
         columnNumber: 10
     }, this) //<div><br />
     ;
@@ -37144,7 +37176,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap/Form":"iBZ80","react-bootstrap/Button":"aPzUt","./login-view.scss":"e57ax"}],"e57ax":[function() {},{}],"bwuIu":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap/Form":"iBZ80","react-bootstrap/Button":"aPzUt","./login-view.scss":"e57ax","axios":"jo6P5"}],"e57ax":[function() {},{}],"bwuIu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
