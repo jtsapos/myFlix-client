@@ -25984,8 +25984,7 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MainView", ()=>MainView
-) //export default MainView;
-;
+);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 //In React, each component has a set of methods that lets you run a piece of code at specific points within the component’s lifetime. constructor(),componenetDidMount()etc.
 // myFlix-client/src/main-view/main-view.jsx
@@ -26123,6 +26122,7 @@ class MainView extends _reactDefault.default.Component {
         }, this);
     }
 }
+exports.default = MainView;
 MainView.propTypes = {};
 
   $parcel$ReactRefreshHelpers$f7a6.postlude(module);
@@ -37130,9 +37130,9 @@ function LoginView(props) {
 _s(LoginView, "wuQOK7xaXdVz4RMrZQhWbI751Oc=");
 _c = LoginView;
 LoginView.propTypes = {
-    user: _propTypesDefault.default.shape({
-        username: _propTypesDefault.default.string.isRequired,
-        password: _propTypesDefault.default.string.isRequired
+    register: _propTypesDefault.default.shape({
+        Username: _propTypesDefault.default.string.isRequired,
+        Password: _propTypesDefault.default.string.isRequired
     }),
     onLoggedIn: _propTypesDefault.default.func.isRequired
 }; //export default LoginView;
