@@ -4,6 +4,8 @@ import { CardGroup, Container, Button, Card } from "react-bootstrap";
 
 import './movie-card.scss'
 
+import { Link } from 'react-router-dom'
+
 
 export class MovieCard extends React.Component {
 
@@ -17,6 +19,7 @@ export class MovieCard extends React.Component {
                         <a><Card.Img variant="top" src={movie.ImagePath} /></a>
                         <Card.Body>
                             <Card.Title id="card-title">{movie.Title}</Card.Title>
+                            <Link to={`/movies/${movie._id}`}></Link>
                             <Button id="card-button" onClick={() => onMovieClick(movie)} variant="link">Show more</Button>
                         </Card.Body>
                     </Card>
