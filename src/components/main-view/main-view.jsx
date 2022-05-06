@@ -80,7 +80,7 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    let accessToken = localStorage.getItem('token');
+    let accessToken = localStorage.getItem('token'); //first get the value of the token from localStorage. If the access token is present, it means the user is already logged in and you can call the getMovies method, which makes a GET request to the “movies” endpoint
     if (accessToken !== null) {
       this.setState({
         user: localStorage.getItem('user')
@@ -109,6 +109,8 @@ export class MainView extends React.Component {
 
     return (
       <Container>
+
+        <Button id="logout-button" onClick={() => { this.onLoggedOut() }}>Logout</Button>
 
         <Row>
           <NavbarView user={user} />
