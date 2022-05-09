@@ -45,7 +45,7 @@ export class ProfileView extends React.Component {
                     Password: response.data.Password,
                     Email: response.data.Email,
                     Birthday: response.data.Birthday,
-                    FavoriteMovies: response.data.FavoriteMovies
+                    Favorites: response.data.Favorites
                 });
             })
             .catch(function (error) {
@@ -214,7 +214,7 @@ export class ProfileView extends React.Component {
                                             type="date"
                                             name="Birthday"
                                             value={Birthday}
-                                            onChange={(e) => this.setBirthdaye(e.target.value)}
+                                            onChange={(e) => this.setBirthday(e.target.value)}
                                             required
                                         />
                                     </FormGroup>
