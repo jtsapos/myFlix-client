@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Form, Button, Card, CardGroup, Container, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import './login-view.scss';
 
@@ -92,7 +93,7 @@ export function LoginView(props) {
 }
 
 LoginView.propTypes = {
-    register: PropTypes.shape({
+    user: PropTypes.shape({
         Username: PropTypes.string.isRequired,
         Password: PropTypes.string.isRequired
     }),
