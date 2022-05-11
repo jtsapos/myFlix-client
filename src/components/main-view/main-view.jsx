@@ -2,7 +2,7 @@
 // myFlix-client/src/main-view/main-view.jsx
 import React from "react";
 import axios from "axios";
-import { Col, Row, Container, Button } from "react-bootstrap";
+import { Col, Row, Button } from "react-bootstrap";
 import "./main-view.scss"
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
@@ -115,7 +115,7 @@ export class MainView extends React.Component {
     //if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
     // Before the movies have been loaded
-    //if (movies.length === 0) return <div className="main-view" />;
+    if (movies.length === 0) return <div className="main-view" />;
 
     return (
       <Router>
@@ -258,6 +258,6 @@ export class MainView extends React.Component {
 }
 //export default MainView;
 
-//MainView.propTypes = {};
+MainView.propTypes = {};
 
 
