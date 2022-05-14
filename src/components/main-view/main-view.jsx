@@ -82,19 +82,19 @@ export class MainView extends React.Component {
 
 
   /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/
-  //setSelectedMovie(movie) {
-  //this.setState({
-  //selectedMovie: movie
-  // });
-  //}
+  setSelectedMovie(movie) {
+    this.setState({
+      selectedMovie: movie
+    });
+  }
 
 
   /* User registers */
-  //onRegistration(register) {
-  //this.setState({
-  //register
-  // });
-  //}
+  onRegistration(register) {
+    this.setState({
+      register
+    });
+  }
 
   componentDidMount() {
     let accessToken = localStorage.getItem('token'); //first get the value of the token from localStorage. If the access token is present, it means the user is already logged in and you can call the getMovies method, which makes a GET request to the “movies” endpoint
@@ -115,7 +115,7 @@ export class MainView extends React.Component {
     //if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
     // Before the movies have been loaded
-    if (movies.length === 0) return <div className="main-view" />;
+    //if (movies.length === 0) return <div className="main-view" />;
 
     return (
       <Router>
@@ -132,7 +132,9 @@ export class MainView extends React.Component {
             if (!user) {
               return <Redirect to="/login" />;
             }
-            if (movies.length === 0) return <div className="main-view" />;
+            if (movies.length === 0) {
+              return <div className="movie-view" />;
+            }
 
             return movies.map(m => (
               <Col md={4} key={m._id}>
@@ -171,7 +173,9 @@ export class MainView extends React.Component {
               );
             }
 
-            if (movies.length === 0) return <div className="main-view" />;
+            if (movies.length === 0) {
+              return <div className="movie-view" />;
+            }
 
             return (
 
@@ -208,7 +212,9 @@ export class MainView extends React.Component {
               );
             }
 
-            if (movies.length === 0) return <div className="main-view" />;
+            if (movies.length === 0) {
+              return <div className="movie-view" />;
+            }
 
             return (
               <Col md={8}>
@@ -229,7 +235,9 @@ export class MainView extends React.Component {
               );
             }
 
-            if (movies.length === 0) return <div className="main-view" />;
+            if (movies.length === 0) {
+              return <div className="movie-view" />;
+            }
 
             return (
               <Col md={8}>
