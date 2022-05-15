@@ -1,15 +1,97 @@
-* {
-  box-sizing: border-box;
-  color: #fff;
-  background-color: #353535;
-  font-family: League Spartan, sans-serif;
+:root {
+  --fontsize-login-card-title: 30px;
+  --fontweight-login-card-title: 600;
+  --fontsize-form-description: 20px;
+  --fontweight-form-description: 400;
 }
 
 * {
   box-sizing: border-box;
-  color: #fff;
-  background-color: #353535;
   font-family: League Spartan, sans-serif;
+}
+
+#registration-form {
+  max-width: 500px;
+}
+
+#registration-form-label {
+  font-size: var(--fontsize-form-description);
+  font-weight: var(--fontweight-form-description);
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+#registration-card-title {
+  font-size: var(--fontsize-login-card-title);
+  font-weight: var(--fontweight-login-card-title);
+  text-align: center;
+  color: #e5383b;
+}
+
+#registration-card {
+  background-color: #020402;
+  border-width: 10px;
+  border-color: #f1fffa;
+  padding: 15px;
+}
+
+#register-button {
+  color: #f1fffa;
+  float: right;
+  font-size: var(--fontsize-form-description);
+  font-weight: var(--fontweight-form-description);
+  background-color: #e5383b;
+  border: none;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+:root {
+  --fontsize-login-card-title: 30px;
+  --fontweight-login-card-title: 600;
+  --fontsize-form-description: 20px;
+  --fontweight-form-description: 400;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: League Spartan, sans-serif;
+}
+
+#login-form {
+  max-width: 500px;
+}
+
+#login-form-label {
+  font-size: var(--fontsize-form-description);
+  font-weight: var(--fontweight-form-description);
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+#login-card-title {
+  font-size: var(--fontsize-login-card-title);
+  font-weight: var(--fontweight-login-card-title);
+  text-align: center;
+  color: #e5383b;
+}
+
+#login-card {
+  background-color: #020402;
+  border-width: 10px;
+  border-color: #f1fffa;
+  padding: 15px;
+}
+
+#login-button {
+  color: #f1fffa;
+  float: right;
+  font-size: var(--fontsize-form-description);
+  font-weight: var(--fontweight-form-description);
+  background-color: #e5383b;
+  border: none;
+  margin-top: 25px;
+  margin-bottom: 10px;
 }
 
 :root {
@@ -92,11 +174,27 @@
   margin-right: 20px;
 }
 
+:root {
+  --fontsize-button-text: 15px;
+  --fontweight-button-text: 400;
+}
+
 * {
   box-sizing: border-box;
   color: #f1fffa;
   background-color: #020402;
   font-family: League Spartan, sans-serif;
+}
+
+#logout-button {
+  color: #f1fffa;
+  font-size: var(--fontsize-button-text);
+  font-weight: var(--fontweight-button-text);
+  background-color: #e5383b;
+  border: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 
 :root {
@@ -123,7 +221,9 @@
 }
 
 #navbar-brand {
+  color: #f1fffa;
   background-color: #e5383b;
+  margin-left: 20px;
   font-size: 30px;
   font-weight: 900;
 }
@@ -133,11 +233,17 @@
 }
 
 #nav-link {
-  color: #020402;
+  color: #f1fffa;
   background-color: #e5383b;
   font-size: 20px;
   font-weight: 600;
 }
+
+
+
+
+
+
 
 .my-flix {
   color: #4682b4;

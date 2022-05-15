@@ -4,6 +4,8 @@ import './movie-view.scss'
 
 import { Card, Col, Container, Row, Button } from "react-bootstrap";
 
+import { Link } from "react-router-dom";
+
 export class MovieView extends React.Component {
 
     render() {
@@ -19,10 +21,14 @@ export class MovieView extends React.Component {
                                 <Card.Title id="movie-title" className="movie-title">{movie.Title}</Card.Title>
                                 <Card.Text id="movie-description" className="movie-description">
                                     {movie.Description}</Card.Text>
-                                <Card.Text id="movie-director" className="movie-director">
-                                    Director: {movie.Director.Name}</Card.Text>
-                                <Card.Text id="movie-genre" className="movie-gerne">
-                                    Genre: {movie.Genre.Name}</Card.Text>
+                                <Link to={`/director/${movie.Director.Name}`}>
+                                    <Button variant="link" id="movie-director" className="movie-director">
+                                        Director: {movie.Director.Name}</Button>
+                                </Link>
+                                <Link to={`/genre/${movie.Genre.Name}`}>
+                                    <Button variant="link" id="movie-genre" className="movie-gerne">
+                                        Genre: {movie.Genre.Name}</Button>
+                                </Link>
 
                             </Card.Body>
                         </Card>
@@ -48,8 +54,8 @@ MovieView.propTypes = {
             Bio: PropTypes.string.isRequired,
             Birth: PropTypes.string.isRequired
         }),
-        //Actors: PropTypes.array,
-        ImagePath: PropTypes.string
+        Actors: PropTypes.array,
+        ImagePath: PropTypes.string.isRequired
     }).isRequired
 };
 
