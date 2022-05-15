@@ -45,17 +45,14 @@ export class MainView extends React.Component {
       });
   }
 
-  componentDidMount() { //inside the componentDidMount() lifecycle method, query your myFlix API server’s /movies endpoint with a get request using Axios. 
-    //Code executed right after the component is added to the DOM
-    axios.get('https://myflixs.herokuapp.com/movies')
-      .then(response => {
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token'); //first get the value of the token from localStorage. If the access token is present, it means the user is already logged in and you can call the getMovies method, which makes a GET request to the “movies” endpoint
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
       });
+      this.getMovies(accessToken);
+    }
   }
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
@@ -75,35 +72,24 @@ export class MainView extends React.Component {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.setState({
-      user: null
+      user: null,
     });
   }
-
 
   /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/
-  setSelectedMovie(movie) {
-    this.setState({
-      selectedMovie: movie
-    });
-  }
+  //setSelectedMovie(movie) {
+  //this.setState({
+  //selectedMovie: movie
+  //});
+  //}
 
 
   /* User registers */
-  onRegistration(register) {
-    this.setState({
-      register
-    });
-  }
-
-  componentDidMount() {
-    let accessToken = localStorage.getItem('token'); //first get the value of the token from localStorage. If the access token is present, it means the user is already logged in and you can call the getMovies method, which makes a GET request to the “movies” endpoint
-    if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      });
-      this.getMovies(accessToken);
-    }
-  }
+  //onRegistration(register) {
+  //this.setState({
+  //register
+  //});
+  //}
 
   render() {  //render() method is the only mandatory method for a class component.
     const { movies, user } = this.state;
