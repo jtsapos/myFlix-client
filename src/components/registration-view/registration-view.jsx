@@ -5,7 +5,6 @@ import { Form, Button, Card, CardGroup, Container, Col, Row } from 'react-bootst
 
 import './registration-view.scss'
 
-
 // Create RegistrationView as function component using Hooks
 export function RegistrationView(props) {
     // Call useState method from React to initialize registration variables with an empty value
