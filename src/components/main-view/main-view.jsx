@@ -61,7 +61,6 @@ export class MainView extends React.Component {
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
   onLoggedIn(authData) { //this is updated from login-view (props.onLoggedIn(data))
     console.log(authData);
-
     this.setState({
       user: authData.user.Username
     });
@@ -252,8 +251,7 @@ export class MainView extends React.Component {
           <Route path={`/users/${user}`} render={({ history }) => {
             if (!user)
               return <Redirect to="/" />
-            return
-            <Col>
+            return <Col>
               <ProfileView user={user}
                 onBackClick={() => history.goBack()} />
             </Col>
