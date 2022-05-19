@@ -28,8 +28,10 @@ $mainColor: #e5383b;
 
 #navbar-brand {
     background-color: $mainColor;
+    color: $textColor;
     font-size: 30px;
     font-weight: 900;
+    margin-left: 20px;
 }
 
 #nav {
