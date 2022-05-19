@@ -13,26 +13,71 @@ export function RegistrationView(props) {
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
 
-    // Sending request to server for authentication
+    const [usernameErr, setUsernameErr] = useState('');
+    const [passwordErr, setPasswordErr] = useState('');
+    const [emailErr, setEmailErr] = useState('');
+
+    const validate = () => {
+        let isReq = true;
+        if (!username) {
+            setUsernameErr('Username Required');
+            isReq = false;
+        } else if (username.length < 2) {
+            setUsernameErr('Username must be at least 2 characters long');
+            isReq = false;
+        }
+        if (!password) {
+            setPasswordErr('Password Required');
+            isReq = false;
+        } else if (password.length < 6) {
+            setPasswordErr('Password must be at least 6 characters long');
+            isReq = false;
+        }
+        if (!email) {
+            setEmailErr('Please enter a email address');
+            isReq = false;
+        } else if (email.indexOf('@') === -1) {
+            setEmailErr('Please enter a valid email address');
+        }
+        return isReq;
+    }
+
     const handleSubmit = (e) => {
-        e.preventDefault(); // prevent default submit button behaviour, i.e., don't reload the page
-        console.log(username, password, email, birthday);
-        /* Send a request to the server for authentication */
-        /* then call props.onLoggedIn(username) */
-        props.onRegistration(username);
+        e.preventDefault();
+        const isReq = validate();
+
+        if (isReq) {
+            axios.post('https://myflixs.herokuapp.com/users', {
+                Username: username,
+                Password: password,
+                Email: email
+            })
+                .then(response => {
+                    const data = response.data;
+                    console.log(data);
+                    alert('Registration successful, please login');
+                    window.open('/', '_self');
+                })
+                .catch(response => {
+                    console.log(response);
+                    alert('unable to register');
+                });
+        }
     };
 
+
+
     return (
-        <Container>
+        <Container id="registration-form">
             <Row>
                 <Col>
                     <CardGroup>
-                        <Card>
+                        <Card id="registration-card">
                             <Card.Body>
-                                <Card.Title>Please Register Here</Card.Title>
+                                <Card.Title id="registration-card-title">Please register</Card.Title>
                                 <Form>
                                     <Form.Group>
-                                        <Form.Label>Username</Form.Label>
+                                        <Form.Label id="registration-form-label">Username</Form.Label>
                                         <Form.Control
                                             type="text"
                                             value={username}
@@ -40,10 +85,11 @@ export function RegistrationView(props) {
                                             required
                                             placeholder="Enter a username"
                                         />
+                                        {usernameErr && <p>{usernameErr}</p>}
                                     </Form.Group>
 
                                     <Form.Group>
-                                        <Form.Label>Password</Form.Label>
+                                        <Form.Label id="registration-form-label">Password</Form.Label>
                                         <Form.Control
                                             type="password"
                                             value={password}
@@ -52,25 +98,26 @@ export function RegistrationView(props) {
                                             placeholder="Enter a Password"
                                             minLength="8"
                                         />
+                                        {passwordErr && <p>{passwordErr}</p>}
                                     </Form.Group>
 
                                     <Form.Group>
-                                        <Form.Label>Email</Form.Label>
+                                        <Form.Label id="registration-form-label">Email</Form.Label>
                                         <Form.Control
                                             type="email"
                                             value={email}
                                             onChange={e => setEmail(e.target.value)}
                                             required
-                                            placeholder="Enter your email address"
+                                            placeholder="Enter your email adress"
                                         />
+                                        {emailErr && <p>{emailErr}</p>}
                                     </Form.Group>
 
-                                    <Button variant="primary"
+                                    <Button id="register-button" variant="primary"
                                         type="submit"
                                         onClick={handleSubmit}>
                                         Register
                                     </Button>
-                                    <Button id="movie-view-button" onClick={() => { onBackClick(null); }}>Back</Button>
                                 </Form>
                             </Card.Body>
                         </Card>
