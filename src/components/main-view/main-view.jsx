@@ -104,7 +104,7 @@ export class MainView extends React.Component {
   render() {  //render() method is the only mandatory method for a class component.
     const { movies, user } = this.state;
 
-    //if (!register) return <RegistrationView onRegistration={(register) => this.onRegistration(register)} />;
+    if (!register) return <RegistrationView onRegistration={(register) => this.onRegistration(register)} />;
 
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
     //if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
@@ -128,7 +128,7 @@ export class MainView extends React.Component {
               return <Redirect to="/login" />;
             }
             if (movies.length === 0) {
-              return <div className="movie-view" />;
+              return <div className="main-view" />;
             }
 
             return movies.map(m => (
@@ -169,7 +169,7 @@ export class MainView extends React.Component {
             }
 
             if (movies.length === 0) {
-              return <div className="movie-view" />;
+              return <div className="main-view" />;
             }
 
             return (
@@ -207,7 +207,7 @@ export class MainView extends React.Component {
             }
 
             if (movies.length === 0) {
-              return <div className="movie-view" />;
+              return <div className="main-view" />;
             }
 
             return (
@@ -231,7 +231,7 @@ export class MainView extends React.Component {
             }
 
             if (movies.length === 0) {
-              return <div className="movie-view" />;
+              return <div className="main-view" />;
             }
 
             return (
