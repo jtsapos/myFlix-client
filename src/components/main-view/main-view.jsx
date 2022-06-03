@@ -17,7 +17,7 @@ import { GenreView } from "../genre-view/genre-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavbarView } from "../navbar-view/navbar-view";
 
-export class MainView extends React.Component {
+export default class MainView extends React.Component {
 
   constructor() { ///REACT uses Constructor method to allow components to be rendered in the DOM. If you don’t use the constructor() method, you can’t include any extra code to be executed at the point where the component is created. 
     super();   //super()will call the parent React.Component’s constructor, which will give your class the actual React component’s features. 
@@ -45,17 +45,17 @@ export class MainView extends React.Component {
       });
   }
 
-  componentDidMount() {
-    axios.get('https://myflixs.herokuapp.com/movies')
-      .then(response => {
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  //componentDidMount() {
+  //axios.get('https://myflixs.herokuapp.com/movies')
+  //.then(response => {
+  //this.setState({
+  //movies: response.data
+  //});
+  //})
+  //.catch(error => {
+  //console.log(error);
+  //});
+  //}
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
   onLoggedIn(authData) { //this is updated from login-view (props.onLoggedIn(data))
@@ -107,7 +107,7 @@ export class MainView extends React.Component {
     if (!register) return <RegistrationView onRegistration={(register) => this.onRegistration(register)} />;
 
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-    //if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
     // Before the movies have been loaded
     if (movies.length === 0) return <div className="main-view" />;
