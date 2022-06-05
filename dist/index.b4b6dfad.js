@@ -25061,28 +25061,10 @@ class MainView extends _reactDefault.default.Component {
     //}
     render() {
         //render() method is the only mandatory method for a class component.
-        const { movies , user: user1  } = this.state;
-        if (!register) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_registrationView.RegistrationView, {
-            onRegistration: (register)=>this.onRegistration(register)
-        }, void 0, false, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 110,
-            columnNumber: 27
-        }, this);
-        /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/ if (!user1) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {
-            onLoggedIn: (user)=>this.onLoggedIn(user)
-        }, void 0, false, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 113,
-            columnNumber: 23
-        }, this); // Before the movies have been loaded
-        if (movies.length === 0) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-            className: "main-view"
-        }, void 0, false, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 115,
-            columnNumber: 37
-        }, this);
+        const { movies , user: user1  } = this.state; //if (!register) return <RegistrationView onRegistration={(register) => this.onRegistration(register)} />;
+        /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/ //if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+        // Before the movies have been loaded
+        //if (movies.length === 0) return <div className="main-view" />;
         return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.BrowserRouter, {
             children: [
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Button, {
@@ -37268,8 +37250,7 @@ RegistrationView.propTypes = {
         Username: _propTypesDefault.default.string.isRequired,
         Password: _propTypesDefault.default.string.isRequired,
         Email: _propTypesDefault.default.string.isRequired
-    }),
-    onRegistration: _propTypesDefault.default.func.isRequired
+    }) //onRegistration: PropTypes.func.isRequired
 };
 var _c;
 $RefreshReg$(_c, "RegistrationView");
@@ -39874,8 +39855,7 @@ class MovieCard extends _reactDefault.default.Component {
 MovieCard.propTypes = {
     movie: _propTypesDefault.default.shape({
         Title: _propTypesDefault.default.string.isRequired
-    }).isRequired,
-    onMovieClick: _propTypesDefault.default.func.isRequired
+    }).isRequired //onMovieClick: PropTypes.func.isRequired
 }; //export default MovieCard;
  /* Use propTypes to validate data types of props
     Validation logic:
