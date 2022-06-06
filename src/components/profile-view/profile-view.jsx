@@ -19,20 +19,6 @@ export class ProfileView extends React.Component {
         };
     }
 
-    componentDidMount() {
-        const accessToken = localStorage.getItem('token');
-        this.getUser(accessToken);
-    }
-
-    onLoggedOut() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        this.setState({
-            user: null
-        });
-        window.open('/', '_self');
-    }
-
     getUser(token) {
         const Username = localStorage.getItem('user');
 
@@ -51,6 +37,20 @@ export class ProfileView extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
+    }
+
+    componentDidMount() {
+        const accessToken = localStorage.getItem('token');
+        this.getUser(accessToken);
+    }
+
+    onLoggedOut() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.setState({
+            user: null
+        });
+        window.open('/', '_self');
     }
 
     editUser = (e) => {
