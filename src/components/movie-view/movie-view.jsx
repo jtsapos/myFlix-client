@@ -71,6 +71,26 @@ export class MovieView extends React.Component {
             );
         }
     }
+
+    // Delete a movie from Favourite movies 
+    removeFavMovie = () => {
+        let token = localStorage.getItem('token');
+        let user = localStorage.getItem("user");
+        axios.delete(`https://myflixs.herokuapp.com/users/${user}/movies/${this.props.movie._id}`,
+            {
+                headers: { Authorization: `Bearer ${token}` },
+            }).then((response) => {
+                console.log(response.data);
+                alert(
+                    `${this.props.movie.Title} has been removed from your list of movies`
+                );
+                window.open(`/movies/${this.props.movie._id}`, "_self");
+            })
+            .catch(e => {
+                console.log('Error')
+            });
+    }
+
     render() {
         const { movie, onBackClick } = this.props;
         const { FavoriteMovies, username, password, email, birthday } = this.state;
