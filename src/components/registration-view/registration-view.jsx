@@ -34,10 +34,11 @@ export function RegistrationView(props) {
             isReq = false;
         }
         if (!email) {
-            setEmailErr('Please enter a email address');
+            setEmailErr('Please enter an email address');
             isReq = false;
         } else if (email.indexOf('@') === -1) {
             setEmailErr('Please enter a valid email address');
+            isReq = false;
         }
         return isReq;
     }
