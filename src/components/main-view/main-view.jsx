@@ -2,10 +2,12 @@
 // myFlix-client/src/main-view/main-view.jsx
 import React from "react";
 import axios from "axios";
-import { Col, Row, Button } from "react-bootstrap";
-import "./main-view.scss"
+
+import { connect } from 'react-redux';
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { Col, Row, Button } from "react-bootstrap";
+import "./main-view.scss"
 
 
 import { RegistrationView } from "../registration-view/registration-view";
