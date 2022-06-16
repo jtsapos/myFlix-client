@@ -30,9 +30,13 @@ class MainView extends React.Component {
     //Also, it will initialize the component’s 'this' variable. Keep in mind that calling super() is a mandatory step whenever you want to include the constructor() method in your component.
     // Initial state is set to null
     this.state = {
+      user: null,
+      selectedMovie: null,
+      directors: [],
+      genres: [],
       movies: [],
-      //selectedMovie: null,
-      user: null // Set initial user state to null, used for user login --> Default is logged out. The LoginView is rendered as long as there's no user in the state.
+      FavoriteMovies: [],
+
     };
   }
 
