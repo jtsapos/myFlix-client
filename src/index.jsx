@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Container from 'react-bootstrap/Container';
-import { devToolsEnhancer } from "redux-devtools-extension";
 import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'; //Provider makes the store accessible to any component that might want to use it.
+import { devToolsEnhancer } from "redux-devtools-extension";
 import moviesApp from './reducers/reducers';
 
 import MainView from './components/main-view/main-view';
@@ -17,7 +17,7 @@ const store = createStore(moviesApp, devToolsEnhancer());
 class MyFlixApplication extends React.Component {
   render() {
     return (
-      <Provider store={store}>
+      <Provider store={store}> {/*inside the Provider we will pass every component that will want to have access to that store you wrap each componenet inside the Provider*/}
         <Container id="main-view">
           <MainView />
         </Container>
