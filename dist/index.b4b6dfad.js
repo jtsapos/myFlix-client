@@ -25034,7 +25034,7 @@ class MainView extends _reactDefault.default.Component {
             genres: [],
             movies: [],
             FavoriteMovies: [],
-            us: {}
+            usr: {}
         };
     }
     getMovies(token) {
@@ -25062,7 +25062,7 @@ class MainView extends _reactDefault.default.Component {
         //this is updated from login-view (props.onLoggedIn(data))
         //console.log(authData);
         this.setState({
-            us: authData.user,
+            usr: authData.user,
             user: authData.user.Username,
             FavoriteMovies: authData.user.FavoriteMovies
         });
