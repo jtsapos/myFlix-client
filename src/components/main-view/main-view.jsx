@@ -54,7 +54,7 @@ class MainView extends React.Component {
       genres: [],
       movies: [],
       FavoriteMovies: [],
-      us: {},
+      usr: {},
 
     };
   }
@@ -87,7 +87,7 @@ class MainView extends React.Component {
   onLoggedIn(authData) { //this is updated from login-view (props.onLoggedIn(data))
     //console.log(authData);
     this.setState({
-      us: authData.user,
+      usr: authData.user,
       user: authData.user.Username,
       FavoriteMovies: authData.user.FavoriteMovies,
     });
